@@ -11,8 +11,15 @@ npm install -g @nestjs/cli
 - Configurar o banco em db/data-source.ts
 - Criar um banco com o nome "theater"
 
-## Rodar as migrations
-- (migrations)
+## Banco de dados
+- Criar tabelas no banco
+```bash
+npm run typeorm:run
+```
+- Popular tabelas com dados
+```bash
+npm run typeorm-seed:run
+```
 
 ## Rodar o projeto
 ```bash
