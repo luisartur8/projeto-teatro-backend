@@ -1,0 +1,1184 @@
+{
+	"info": {
+		"_postman_id": "c835c3c9-caa3-41c3-92a8-b69add620343",
+		"name": "projeto-teatro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45898400",
+		"_collection_link": "https://luisartur.postman.co/workspace/Luis-Artur's-Workspace~b08c6c78-06f8-4216-8409-da9824b8f722/collection/45898400-c835c3c9-caa3-41c3-92a8-b69add620343?action=share&source=collection_link&creator=45898400"
+	},
+	"item": [
+		{
+			"name": "Actor",
+			"item": [
+				{
+					"name": "Get dashboard info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/actor/info",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"actor",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all actors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/actor",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"actor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific actor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/actor/a39c107d-7ecb-44d9-8525-6f96b0106b1d",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"actor",
+								"a39c107d-7ecb-44d9-8525-6f96b0106b1d"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Exception actor not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/actor/22222222-2222-2222-2222-222222222299",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"actor",
+										"22222222-2222-2222-2222-222222222299"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create actor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"José\",\r\n    \"image\": \"https://josefoto.com\",\r\n    \"phone\": \"(48) 98888-8888\",\r\n    \"email\": \"jose@esucri.com\",\r\n    \"birth_date\": \"1999-03-23\",\r\n    \"gender\": \"F\",\r\n    \"biography\": \"Atuou em diversar peças\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/actor",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"actor"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Exception actor already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"a39c107d-7ecb-44d9-8525-6f96b0106b1d\",\r\n    \"name\": \"José\",\r\n    \"image\": \"https://josefoto.com\",\r\n    \"phone\": \"(48) 98888-8888\",\r\n    \"email\": \"jose@esucri.com\",\r\n    \"birth_date\": \"1999-03-23\",\r\n    \"gender\": \"F\",\r\n    \"biography\": \"Atuou em diversar peças\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/actor",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"actor"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Create actor",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/actor",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"actor"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						},
+						{
+							"name": "Regra de negócio: nome",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"José123\",\r\n    \"image\": \"https://josefoto.com\",\r\n    \"phone\": \"(48) 98888-8888\",\r\n    \"email\": \"jose@esucri.com\",\r\n    \"birth_date\": \"1999-03-23\",\r\n    \"gender\": \"F\",\r\n    \"biography\": \"Atuou em diversar peças\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/actor",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"actor"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						},
+						{
+							"name": "Regra de negócio: telefone",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"José\",\r\n    \"image\": \"https://josefoto.com\",\r\n    \"phone\": \"(09) 98888-8888\",\r\n    \"email\": \"jose@esucri.com\",\r\n    \"birth_date\": \"1999-03-23\",\r\n    \"gender\": \"F\",\r\n    \"biography\": \"Atuou em diversar peças\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/actor",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"actor"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						},
+						{
+							"name": "Regra de negócio: idade",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"José\",\r\n    \"image\": \"https://josefoto.com\",\r\n    \"phone\": \"(48) 98888-8888\",\r\n    \"email\": \"jose@esucri.com\",\r\n    \"birth_date\": \"1900-03-23\",\r\n    \"gender\": \"F\",\r\n    \"biography\": \"Atuou em diversar peças\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/actor",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"actor"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Update actor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mariana\",\r\n    \"image\": \"https://marianafoto.com\",\r\n    \"phone\": \"(48) 97777-7777\",\r\n    \"email\": \"mariana@esucri.com\",\r\n    \"birth_date\": \"1998-03-23\",\r\n    \"gender\": \"F\",\r\n    \"biography\": \"Atuou em muitas peças\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/actor/26878819-76ce-4205-a351-db9e759282d2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"actor",
+								"26878819-76ce-4205-a351-db9e759282d2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete actor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/actor/28721283-9711-429f-a57c-5cbeaaaec65b",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"actor",
+								"28721283-9711-429f-a57c-5cbeaaaec65b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Director",
+			"item": [
+				{
+					"name": "Get all directors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/director",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"director"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific director",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/director/6732084d-528f-42d2-8679-5e797023a26b",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"director",
+								"6732084d-528f-42d2-8679-5e797023a26b"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Exception director not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/director/11111111-1111-1111-1111-111111111111",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"director",
+										"11111111-1111-1111-1111-111111111111"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Create director",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Josue\",\r\n    \"specialty\": \"Cantor\",\r\n    \"experience\": \"10 anos\",\r\n    \"image\": \"https://josuefoto.com\",\r\n    \"phone\": \"(11) 91111-2222\",\r\n    \"email\": \"josueemail@esucri.com\",\r\n    \"birth_date\": \"1991-06-20\",\r\n    \"gender\": \"M\",\r\n    \"biography\": \"Estudou em x e atuou em y\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/director",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"director"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Exception director already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"6732084d-528f-42d2-8679-5e797023a26b\",\r\n    \"name\": \"Josue\",\r\n    \"specialty\": \"Cantor\",\r\n    \"experience\": \"10 anos\",\r\n    \"image\": \"https://josuefoto.com\",\r\n    \"phone\": \"(11) 91111-2222\",\r\n    \"email\": \"josueemail@esucri.com\",\r\n    \"birth_date\": \"1991-06-20\",\r\n    \"gender\": \"M\",\r\n    \"biography\": \"Estudou em x e atuou em y\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/director",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"director"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Director without body",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/director",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"director"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Regra de negócio: Experiencia em anos",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Josue\",\r\n    \"specialty\": \"Cantor\",\r\n    \"experience\": \"dez anos\",\r\n    \"image\": \"https://josuefoto.com\",\r\n    \"phone\": \"(11) 91111-2222\",\r\n    \"email\": \"josueemail@esucri.com\",\r\n    \"birth_date\": \"1991-06-20\",\r\n    \"gender\": \"M\",\r\n    \"biography\": \"Estudou em x e atuou em y\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/director",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"director"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						},
+						{
+							"name": "Regra de negócio: Email válido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Josue\",\r\n    \"specialty\": \"Cantor\",\r\n    \"experience\": \"dez anos\",\r\n    \"image\": \"https://josuefoto.com\",\r\n    \"phone\": \"(11) 91111-2222\",\r\n    \"email\": \"josueemail_@_esucri.com\",\r\n    \"birth_date\": \"1991-06-20\",\r\n    \"gender\": \"M\",\r\n    \"biography\": \"Estudou em x e atuou em y\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/director",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"director"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						},
+						{
+							"name": "Regra de negócio: Genero válido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Josue\",\r\n    \"specialty\": \"Cantor\",\r\n    \"experience\": \"10 anos\",\r\n    \"image\": \"https://josuefoto.com\",\r\n    \"phone\": \"(11) 91111-2222\",\r\n    \"email\": \"josueemail@esucri.com\",\r\n    \"birth_date\": \"1991-06-20\",\r\n    \"gender\": \"O\",\r\n    \"biography\": \"Estudou em x e atuou em y\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/director",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"director"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Update director",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Josue\",\r\n    \"specialty\": \"Cantor\",\r\n    \"experience\": \"10 anos\",\r\n    \"image\": \"https://josuefoto.com\",\r\n    \"phone\": \"(11) 91111-2222\",\r\n    \"email\": \"josueemail@esucri.com\",\r\n    \"birth_date\": \"1991-06-20\",\r\n    \"gender\": \"M\",\r\n    \"biography\": \"Estudou em x e atuou em y\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/director/6732084d-528f-42d2-8679-5e797023a26b",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"director",
+								"6732084d-528f-42d2-8679-5e797023a26b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete director",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/director/35eeef78-57ba-4746-93cb-1605d1dd3c77",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"director",
+								"35eeef78-57ba-4746-93cb-1605d1dd3c77"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Play",
+			"item": [
+				{
+					"name": "Get all plays",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/play",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"play"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific play",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/play/1b48785e-88cc-4e9a-9a49-0bbc417e105c",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"play",
+								"1b48785e-88cc-4e9a-9a49-0bbc417e105c"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Exception play not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/play/33333333-3333-3333-3333-333333333399",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"play",
+										"33333333-3333-3333-3333-333333333399"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create play",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"A Tragédia dos Sonhos\",\r\n    \"synopsis\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua\",\r\n    \"gender\": \"Drama\",\r\n    \"address\": \"Rua A, 123\",\r\n    \"actorId\": [\r\n    \"a39c107d-7ecb-44d9-8525-6f96b0106b1d\",\r\n    \"26878819-76ce-4205-a351-db9e759282d2\"\r\n    ],\r\n    \"directorId\": \"6732084d-528f-42d2-8679-5e797023a26b\",\r\n    \"theaterId\": \"3895404f-b0c7-48b9-86e9-51bae89f2149\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/play",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"play"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Exception play already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"1b48785e-88cc-4e9a-9a49-0bbc417e105c\",\r\n    \"name\": \"A Tragédia dos Sonhos\",\r\n    \"synopsis\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua\",\r\n    \"gender\": \"Drama\",\r\n    \"address\": \"Rua A, 123\",\r\n    \"actorId\": [\r\n    \"a39c107d-7ecb-44d9-8525-6f96b0106b1d\",\r\n    \"26878819-76ce-4205-a351-db9e759282d2\"\r\n    ],\r\n    \"directorId\": \"6732084d-528f-42d2-8679-5e797023a26b\",\r\n    \"theaterId\": \"3895404f-b0c7-48b9-86e9-51bae89f2149\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/play",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"play"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Play without body",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/play",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"play"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Update play",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"A Tragédia dos lorem ipsum\",\r\n    \"synopsis\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua\",\r\n    \"gender\": \"Drama\",\r\n    \"address\": \"Rua A, 123\",\r\n    \"actorId\": [\r\n    \"a39c107d-7ecb-44d9-8525-6f96b0106b1d\",\r\n    \"26878819-76ce-4205-a351-db9e759282d2\"\r\n    ],\r\n    \"directorId\": \"6732084d-528f-42d2-8679-5e797023a26b\",\r\n    \"theaterId\": \"3895404f-b0c7-48b9-86e9-51bae89f2149\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/play/1b48785e-88cc-4e9a-9a49-0bbc417e105c",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"play",
+								"1b48785e-88cc-4e9a-9a49-0bbc417e105c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete play",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/play/b270bef9-d391-459d-a9f2-afa3d65abbd5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"play",
+								"b270bef9-d391-459d-a9f2-afa3d65abbd5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Theater",
+			"item": [
+				{
+					"name": "Get page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/theater?page=2&limit=5&order=desc",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"theater"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "order",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all theaters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/theater",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"theater"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific theater",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/theater/00000000-0000-0000-0000-000000000001",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"theater",
+								"00000000-0000-0000-0000-000000000001"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get specific theater",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/theater/00000000-0000-0000-0000-000000000099",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"theater",
+										"00000000-0000-0000-0000-000000000099"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create theater",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Teatro Municipal\",\r\n    \"image\": null,\r\n    \"phone\": \"11911111111\",\r\n    \"email\": \"municipal@teatro.com\",\r\n    \"foundation\": \"1980-01-01\",\r\n    \"address\": \"Rua A, 123\",\r\n    \"capacity\": 500,\r\n    \"website\": \"https://municipal.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/theater",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"theater"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Exception theater already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"3895404f-b0c7-48b9-86e9-51bae89f2149\",\r\n    \"name\": \"Teatro Municipal\",\r\n    \"image\": null,\r\n    \"phone\": \"11911111111\",\r\n    \"email\": \"municipal@teatro.com\",\r\n    \"foundation\": \"1980-01-01T03:00:00.000Z\",\r\n    \"address\": \"Rua A, 123\",\r\n    \"capacity\": 500,\r\n    \"website\": \"https://municipal.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/theater",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"theater"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Theater without body",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/theater",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"theater"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Regra de negócio: Fundação entre hoje e 1800",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Teatro Municipal\",\r\n    \"image\": null,\r\n    \"phone\": \"11911111111\",\r\n    \"email\": \"municipal@teatro.com\",\r\n    \"foundation\": \"1780-01-01T03:00:00.000Z\",\r\n    \"address\": \"Rua A, 123\",\r\n    \"capacity\": 500,\r\n    \"website\": \"https://municipal.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/theater",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"theater"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Regra de negócio: Endereço válido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Teatro Municipal\",\r\n    \"image\": null,\r\n    \"phone\": \"11911111111\",\r\n    \"email\": \"municipal@teatro.com\",\r\n    \"foundation\": \"1880-01-01T03:00:00.000Z\",\r\n    \"address\": \"Casa A, 123\",\r\n    \"capacity\": 500,\r\n    \"website\": \"https://municipal.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/theater",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"theater"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Regra de negócio: Capacidade no intervalo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Teatro Municipal\",\r\n    \"image\": null,\r\n    \"phone\": \"11911111111\",\r\n    \"email\": \"municipal@teatro.com\",\r\n    \"foundation\": \"1880-01-01T03:00:00.000Z\",\r\n    \"address\": \"Rua A, 123\",\r\n    \"capacity\": 100001,\r\n    \"website\": \"https://municipal.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/theater",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"theater"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Update theater",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Teatro do leste\",\r\n    \"image\": null,\r\n    \"phone\": \"11911111111\",\r\n    \"email\": \"municipal@teatro.com\",\r\n    \"foundation\": \"1980-01-01T03:00:00.000Z\",\r\n    \"address\": \"Rua A, 123\",\r\n    \"capacity\": 500,\r\n    \"website\": \"https://municipal.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/theater/3265976c-9e52-4a53-ab64-ae03b16431e5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"theater",
+								"3265976c-9e52-4a53-ab64-ae03b16431e5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete theater",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/theater/0564d5e1-62fd-4d39-bb58-4768890b8d4d",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"theater",
+								"0564d5e1-62fd-4d39-bb58-4768890b8d4d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
