@@ -4,7 +4,12 @@ import { ActorDto } from './actor.dto';
 
 @Controller('actor')
 export class ActorController {
-  constructor(private actorService: ActorService) { }
+  constructor(private readonly actorService: ActorService) { }
+
+  @Get('info')
+  findActorInfo() {
+    return this.actorService.findActorInfo();
+  }
 
   @Get()
   findAll() {

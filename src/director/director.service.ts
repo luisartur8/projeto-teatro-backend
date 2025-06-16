@@ -1,47 +1,75 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { DirectorEntity } from "./director.entity";
 import { DirectorDto } from "./director.dto";
 import { Repository } from "typeorm";
+import { DirectorEntity } from "./director.entity";
+import { PlayEntity } from "src/play/play.entity";
 
 @Injectable()
 export class DirectorService {
   constructor(
     @InjectRepository(DirectorEntity)
-    private directorRepository: Repository<DirectorEntity>,
+    private readonly directorRepository: Repository<DirectorEntity>,
+    @InjectRepository(PlayEntity)
+    private readonly playRepository: Repository<PlayEntity>,
   ) { }
 
   findAll() {
     return this.directorRepository.find();
   }
 
-  create(directorDto: DirectorDto) {
+  async findById(id: string) {
+    const director = await this.directorRepository.findOne({ where: { id } });
+    if (!director) throw new NotFoundException('Diretor não encontrado');
+    return director;
+  }
+
+  async create(directorDto: DirectorDto) {
+    await this.validateBusinessRules(directorDto);
+    const actor = await this.findById(directorDto.id);
+    if (actor && directorDto.id) {
+      throw new BadRequestException("Diretor já existe")
+    }
     const directorEntity = this.directorRepository.create(directorDto);
     return this.directorRepository.save(directorEntity);
   }
 
   async update(id: string, directorDto: DirectorDto) {
-    return this.directorRepository.save({
-      ...directorDto,
-      id
-    });
+    await this.validateBusinessRules(directorDto);
+    const director = await this.findById(id);
+    Object.assign(director, directorDto);
+    return this.directorRepository.save(director);
   }
 
-  async findById(directorId: string) {
-    const find = await this.directorRepository.findOne({
-      where: { id: directorId },
-    });
-    if (find === null) {
-      throw new NotFoundException(
-        'Diretor com ID ' + directorId + ' não encontrado!',
-      );
+  async remove(id: string) {
+    const director = await this.findById(id);
+
+    const relatedPlays = await this.playRepository.count({ where: { director: { id } } });
+
+    if (relatedPlays > 0) {
+      throw new BadRequestException(`Não é possível remover um diretor com peças associadas: ${relatedPlays}`);
     }
-    return find;
+
+    await this.directorRepository.remove(director);
+    return { ...director, id };
   }
 
-  async remove(directorId: string) {
-    const find = await this.findById(directorId);
-    await this.directorRepository.remove(find);
-    return { ...find, id: directorId };
+  private async validateBusinessRules(directorDto: DirectorDto) {
+    const { experience, email, gender } = directorDto;
+    await this.validateExperience(experience); // Deve conter algum número
+    await this.validateEmail(email); // Deve ser um email válido
+    await this.validateGender(gender); // Deve ser um genero válido (F ou M)
+  }
+
+  private async validateExperience(experience: string) {
+    if (!/\d/.test(experience)) throw new BadRequestException('A experiencia deve conter números');
+  }
+
+  private async validateEmail(email: string) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new BadRequestException('O email deve ser válido');
+  }
+
+  private async validateGender(gender: string) {
+    if (!/^[FM]$/.test(gender)) throw new BadRequestException('O genero deve ser F ou M');
   }
 }

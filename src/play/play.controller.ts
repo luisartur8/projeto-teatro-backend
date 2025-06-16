@@ -4,7 +4,7 @@ import { PlayDto } from './play.dto';
 
 @Controller('play')
 export class PlayController {
-  constructor(private playService: PlayService) { }
+  constructor(private readonly playService: PlayService) { }
 
   @Get()
   findAll() {

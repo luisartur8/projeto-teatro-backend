@@ -4,7 +4,7 @@ import { DirectorDto } from './director.dto';
 
 @Controller('director')
 export class DirectorController {
-  constructor(private directorService: DirectorService) { }
+  constructor(private readonly directorService: DirectorService) { }
 
   @Get()
   findAll() {

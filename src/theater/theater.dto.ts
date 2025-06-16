@@ -28,8 +28,8 @@ export class TheaterDto {
 
   @IsString({ message: 'O campo phone deve ser do tipo string' })
   @IsNotEmpty({ message: 'O campo phone é obrigatório' })
-  @MinLength(12, { message: 'O campo phone deve ter no mínimo 12 caracteres' })
-  @MaxLength(17, { message: 'O campo phone deve ter no máximo 17 caracteres' })
+  @MinLength(11, { message: 'O campo phone deve ter no mínimo 11 caracteres' })
+  @MaxLength(15, { message: 'O campo phone deve ter no máximo 15 caracteres' })
   phone: string;
 
   @IsEmail({}, { message: 'O campo email deve ser um email válido' })

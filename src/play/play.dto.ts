@@ -31,8 +31,8 @@ export class PlayDto {
 
   @IsString({ message: 'O campo gender deve ser do tipo string' })
   @IsNotEmpty({ message: 'O campo gender é obrigatório' })
-  @MinLength(1, { message: 'O campo gender deve ter 1 caracter' })
-  @MaxLength(1, { message: 'O campo gender deve ter 1 caracter' })
+  @MinLength(4, { message: 'O campo gender deve ter no mínimo 4 caracteres' })
+  @MaxLength(20, { message: 'O campo gender deve ter no máximo 20 caracteres' })
   gender: string;
 
   @IsString({ message: 'O campo address deve ser do tipo string' })

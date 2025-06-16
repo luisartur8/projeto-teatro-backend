@@ -1,47 +1,80 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { PlayEntity } from "./play.entity";
 import { PlayDto } from "./play.dto";
 import { Repository } from "typeorm";
+import { PlayEntity } from "./play.entity";
+import { DirectorEntity } from "src/director/director.entity";
+import { TheaterEntity } from "src/theater/theater.entity";
+import { ActorEntity } from "src/actor/actor.entity";
 
 @Injectable()
 export class PlayService {
   constructor(
     @InjectRepository(PlayEntity)
-    private playRepository: Repository<PlayEntity>,
+    private readonly playRepository: Repository<PlayEntity>,
+    @InjectRepository(DirectorEntity)
+    private readonly directorRepository: Repository<DirectorEntity>,
+    @InjectRepository(TheaterEntity)
+    private readonly theaterRepository: Repository<TheaterEntity>,
+    @InjectRepository(ActorEntity)
+    private readonly actorRepository: Repository<ActorEntity>,
   ) { }
 
   findAll() {
-    return this.playRepository.find();
+    return this.playRepository.find({ relations: ['director', 'theater', 'actor'] });
   }
 
-  create(playDto: PlayDto) {
-    const playEntity = this.playRepository.create(playDto);
+  async findById(id: string) {
+    const play = await this.playRepository.findOne({
+      where: { id },
+      relations: ['director', 'theater', 'actor']
+    });
+    if (!play) throw new NotFoundException('Peça não encontrada');
+    return play;
+  }
+
+  async create(playDto: PlayDto) {
+    const play = await this.findById(playDto.id);
+    if (play && playDto.id) {
+      throw new BadRequestException("Peça já existe")
+    }
+    const playEntity = this.playRepository.create({
+      ...playDto,
+      director: await this.directorRepository.findOneByOrFail({ id: playDto.directorId }),
+      theater: await this.theaterRepository.findOneByOrFail({ id: playDto.theaterId }),
+      actor: playDto.actorId ? await this.actorRepository.findByIds(playDto.actorId) : [],
+    });
     return this.playRepository.save(playEntity);
   }
 
   async update(id: string, playDto: PlayDto) {
-    return this.playRepository.save({
-      ...playDto,
-      id
+    const play = await this.playRepository.findOne({
+      where: { id },
+      relations: ['director', 'theater', 'actor'],
     });
-  }
 
-  async findById(playId: string) {
-    const find = await this.playRepository.findOne({
-      where: { id: playId },
-    });
-    if (find === null) {
-      throw new NotFoundException(
-        'Peça com ID ' + playId + ' não encontrada!',
-      );
+    if (!play) {
+      throw new NotFoundException('Peça com ID ' + id + ' não encontrada!');
     }
-    return find;
+
+    if (playDto.directorId) play.director = await this.directorRepository.findOneByOrFail({ id: playDto.directorId });
+    if (playDto.theaterId) play.theater = await this.theaterRepository.findOneByOrFail({ id: playDto.theaterId });
+    if (playDto.actorId) play.actor = await this.actorRepository.findByIds(playDto.actorId);
+
+    Object.assign(play, {
+      name: playDto.name,
+      image: playDto.image,
+      synopsis: playDto.synopsis,
+      gender: playDto.gender,
+      address: playDto.address,
+    });
+
+    return this.playRepository.save(play);
   }
 
-  async remove(playId: string) {
-    const find = await this.findById(playId);
-    await this.playRepository.remove(find);
-    return { ...find, id: playId };
+  async remove(id: string) {
+    const play = await this.findById(id);
+    await this.playRepository.remove(play);
+    return { ...play, id };
   }
 }

@@ -1,10 +1,19 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, Query } from '@nestjs/common';
 import { TheaterService } from './theater.service';
 import { TheaterDto } from './theater.dto';
 
 @Controller('theater')
 export class TheaterController {
-  constructor(private theaterService: TheaterService) { }
+  constructor(private readonly theaterService: TheaterService) { }
+
+  @Get()
+  findPaginated(
+    @Query('page') page = 1,
+    @Query('limit') limit = 10,
+    @Query('order') order: 'asc' | 'desc' = 'asc',
+  ) {
+    return this.theaterService.findPaginated(Number(page), Number(limit), order);
+  }
 
   @Get()
   findAll() {
