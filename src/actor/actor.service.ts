@@ -73,7 +73,12 @@ export class ActorService {
   }
 
   async remove(id: string) {
-    const actor = await this.findById(id);
+    const actor = await this.actorRepository.findOne({ where: { id }, relations: ['play'] });
+    if (!actor) throw new NotFoundException('Ator não encontrado');
+
+    actor.play = [];
+    await this.actorRepository.save(actor);
+
     await this.actorRepository.remove(actor);
     return { ...actor, id };
   }

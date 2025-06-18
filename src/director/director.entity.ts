@@ -33,6 +33,6 @@ export class DirectorEntity {
   @Column({ nullable: false })
   biography: string;
 
-  @OneToMany(() => PlayEntity, (play) => play.director)
+  @OneToMany(() => PlayEntity, (play) => play.director, { nullable: true })
   play: PlayEntity[];
 }

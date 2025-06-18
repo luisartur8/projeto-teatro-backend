@@ -30,6 +30,6 @@ export class TheaterEntity {
   @Column({ nullable: true })
   website: string;
 
-  @OneToMany(() => PlayEntity, (play) => play.theater)
+  @OneToMany(() => PlayEntity, (play) => play.theater, { nullable: true })
   play: PlayEntity[];
 }

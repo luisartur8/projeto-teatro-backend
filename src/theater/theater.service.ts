@@ -67,12 +67,22 @@ export class TheaterService {
   }
 
   async remove(id: string) {
-    const theater = await this.findById(id);
+    const theater = await this.theaterRepository.findOne({
+      where: { id },
+      relations: ['play'],
+    });
 
-    const relatedPlays = await this.playRepository.count({ where: { theater: { id } } });
+    if (!theater) {
+      throw new NotFoundException('Teatro não encontrado');
+    }
 
-    if (relatedPlays > 0) {
-      throw new BadRequestException(`Não é possível remover um teatro com peças associadas: ${relatedPlays}`);
+    const plays = await this.playRepository.find({
+      where: { theater: { id } },
+    });
+
+    for (const play of plays) {
+      play.theater = null;
+      await this.playRepository.save(play);
     }
 
     await this.theaterRepository.remove(theater);

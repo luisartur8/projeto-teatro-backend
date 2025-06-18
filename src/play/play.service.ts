@@ -73,8 +73,14 @@ export class PlayService {
   }
 
   async remove(id: string) {
-    const play = await this.findById(id);
+    const play = await this.playRepository.findOne({ where: { id }, relations: ['actor'] });
+    if (!play) throw new NotFoundException('Peça não encontrada');
+
+    play.actor = [];
+    await this.playRepository.save(play);
+
     await this.playRepository.remove(play);
     return { ...play, id };
   }
+
 }

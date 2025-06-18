@@ -42,12 +42,22 @@ export class DirectorService {
   }
 
   async remove(id: string) {
-    const director = await this.findById(id);
+    const director = await this.directorRepository.findOne({
+      where: { id },
+      relations: ['play'],
+    });
 
-    const relatedPlays = await this.playRepository.count({ where: { director: { id } } });
+    if (!director) {
+      throw new NotFoundException('Diretor não encontrado');
+    }
 
-    if (relatedPlays > 0) {
-      throw new BadRequestException(`Não é possível remover um diretor com peças associadas: ${relatedPlays}`);
+    const plays = await this.playRepository.find({
+      where: { director: { id } },
+    });
+
+    for (const play of plays) {
+      play.director = null;
+      await this.playRepository.save(play);
     }
 
     await this.directorRepository.remove(director);

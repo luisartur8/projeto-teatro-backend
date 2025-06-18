@@ -23,14 +23,14 @@ export class PlayEntity {
   @Column({ nullable: false })
   address: string;
 
-  @ManyToMany(() => ActorEntity, (actor) => actor.play)
+  @ManyToMany(() => ActorEntity, (actor) => actor.play, { nullable: true })
   actor: ActorEntity[];
 
-  @ManyToOne(() => DirectorEntity, (director) => director.play)
+  @ManyToOne(() => DirectorEntity, (director) => director.play, { nullable: true })
   @JoinColumn({ name: 'director_id' })
-  director: DirectorEntity;
+  director: DirectorEntity | null;
 
-  @ManyToOne(() => TheaterEntity, (theater) => theater.play)
+  @ManyToOne(() => TheaterEntity, (theater) => theater.play, { nullable: true })
   @JoinColumn({ name: 'theater_id' })
-  theater: TheaterEntity;
+  theater: TheaterEntity | null;
 }

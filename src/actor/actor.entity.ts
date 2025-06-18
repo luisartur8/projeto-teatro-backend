@@ -27,7 +27,7 @@ export class ActorEntity {
   @Column({ nullable: false })
   biography: string;
 
-  @ManyToMany(() => PlayEntity, (play) => play.actor)
+  @ManyToMany(() => PlayEntity, (play) => play.actor, { nullable: true })
   @JoinTable({
     name: 'actor_play',
     joinColumn: { name: 'actor_id' },
