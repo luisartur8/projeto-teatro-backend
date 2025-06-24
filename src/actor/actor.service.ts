@@ -91,7 +91,7 @@ export class ActorService {
   }
 
   private async validateName(name: string) {
-    if (/[^\p{L}]/u.test(name)) throw new BadRequestException('O nome só pode ter letras');
+    if (/[^\p{L} ]/u.test(name)) throw new BadRequestException('O nome só pode ter letras');
   }
 
   private async validatePhone(phone: string) {

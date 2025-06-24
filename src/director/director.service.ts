@@ -80,6 +80,6 @@ export class DirectorService {
   }
 
   private async validateGender(gender: string) {
-    if (!/^[FM]$/.test(gender)) throw new BadRequestException('O genero deve ser F ou M');
+    if (!/^[fm]$/i.test(gender)) throw new BadRequestException('O genero deve ser F ou M');
   }
 }
